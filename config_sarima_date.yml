@@ -3,7 +3,7 @@
 csv: "test_data.csv"
 freq: 'D'  
 freq_per: "ds"
-train_start_date: "2021-01-01"
-train_end_date: "2023-05-31"
-pred_start_date: "2023-06-01"
-pred_end_date: "2023-08-31"
+train_start_date: "2016-01-01"
+train_end_date: "2018-12-31"
+pred_start_date: "2019-01-01"
+pred_end_date: "2019-08-31"
