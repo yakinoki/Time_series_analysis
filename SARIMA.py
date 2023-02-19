@@ -8,8 +8,8 @@ import pandas as pd
 import numpy as np
 import yaml
 
-#with open('config_sarima_month.yml','r',encoding="utf-8") as yml:
-with open('config_sarima_date.yml','r',encoding="utf-8") as yml:
+#with open('config/config_sarima_month.yml','r',encoding="utf-8") as yml:
+with open('config/config_sarima_date.yml','r',encoding="utf-8") as yml:
     config = yaml.safe_load(yml) 
     csv = config["csv"]      
     freq = config['freq']

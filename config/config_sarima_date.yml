@@ -1,6 +1,6 @@
 # SARIMA
 
-csv: "test_data.csv"
+csv: "dataset/test_data.csv"
 freq: 'D'  
 freq_per: "ds"
 train_start_date: "2016-01-01"
