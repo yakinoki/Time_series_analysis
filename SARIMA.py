@@ -6,15 +6,32 @@ import optuna as op
 import itertools
 import pandas as pd
 import numpy as np
+import yaml
+
+#with open('config_sarima_month.yml','r',encoding="utf-8") as yml:
+with open('config_sarima_date.yml','r',encoding="utf-8") as yml:
+    config = yaml.safe_load(yml) 
+    csv = config["csv"]      
+    freq = config['freq']
+    freq_per = config['freq_per']
+    train_start_date = config['train_start_date']
+    train_end_date = config['train_end_date']
+    pred_start_date = config['pred_start_date']
+    pred_end_date = config['pred_end_date']
 
 
 # データの読み込み
-bill = pd.read_csv("sample.csv",dtype={'x02':'float64'})
+bill = pd.read_csv(csv,dtype={'x02':'float64'})
+
+
+
 
 # データの整理
-index = pd. date_range("2011-03-31","2015-03-31",freq="M")
+index = pd.date_range(train_start_date,train_end_date,freq=freq)
 bill.index = index
-del bill["Month"]
+print(bill)
+
+del bill[freq_per]
 
 
 # モデルの構築
@@ -44,11 +61,10 @@ selectparameter(bill, 12)
 #モデルの当てはめ
 SARIMA_bill = sm.tsa.statespace.SARIMAX(bill,order=(0, 1, 1),seasonal_order=(1, 1, 0, 12)).fit()
 
-#predに予測データを代入する
-pred = SARIMA_bill.predict("2015-04-30", "2018-01-31")
+#predに予測期間を代入する
+pred = SARIMA_bill.predict(pred_start_date, pred_end_date)
 
 #predデータともとの時系列データの可視化
 plt.plot(bill)
 plt.plot(pred)
 plt.show()
-    
