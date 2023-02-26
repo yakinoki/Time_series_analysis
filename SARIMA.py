@@ -35,6 +35,7 @@ del bill[freq_per]
 
 
 # モデルの構築
+# p,d,qはそれぞれ「季節性自己相関」「季節性導出」「季節性移動平均」という。
 def selectparameter(DATA,s):
     p = d = q = range(0, 2)
     pdq = list(itertools.product(p, d, q))
