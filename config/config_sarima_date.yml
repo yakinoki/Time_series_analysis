@@ -1,9 +1,9 @@
 # SARIMA
 
-csv: "dataset/test_data.csv"
+csv: "dataset/raw_data.csv"
 freq: 'D'  
 freq_per: "ds"
 train_start_date: "2016-01-01"
-train_end_date: "2018-12-31"
-pred_start_date: "2019-01-01"
-pred_end_date: "2019-08-31"
+train_end_date: "2017-12-31"
+pred_start_date: "2017-01-01"
+pred_end_date: "2018-08-31"
