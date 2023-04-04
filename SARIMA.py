@@ -23,9 +23,6 @@ with open('config/config_sarima_date.yml','r',encoding="utf-8") as yml:
 # データの読み込み
 bill = pd.read_csv(csv,dtype={'x02':'float64'})
 
-
-
-
 # データの整理
 index = pd.date_range(train_start_date,train_end_date,freq=freq)
 bill.index = index

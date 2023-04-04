@@ -46,7 +46,8 @@ def objective(trial):
                                         seasonal_order=(seasonal_p, seasonal_d, seasonal_q, s))
         results = mod.fit()
         pred = results.predict(pred_start_date, pred_end_date)
-        error = np.sqrt(np.mean((pred - bill[pred_start_date:pred_end_date])**2))
+        error = np.sqrt(np.mean((pred)**2))
+        #error = np.sqrt(np.mean((pred - bill[pred_start_date:pred_end_date])**2))
     except:
         error = float('inf')
     return error
