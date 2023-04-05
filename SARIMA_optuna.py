@@ -23,11 +23,13 @@ with open('config/config_sarima_date.yml','r',encoding="utf-8") as yml:
 # データの読み込み
 bill = pd.read_csv(csv,dtype={'x02':'float64'})
 
-# データの整理
+# インデックスデータの作成
 index = pd.date_range(train_start_date,train_end_date,freq=freq)
+# インデックスデータの代入
 bill.index = index
 print(bill)
 
+# freq_perカラムの削除
 del bill[freq_per]
 
 # 最適なパラメータを求める
