@@ -24,7 +24,8 @@ print(result.summary())
 #fig.savefig("img.png")
 
 # 予測
-pred = result.predict("2019-01-01", "2019-08-31")
+pred = result.predict("2018-12-01", "2018-12-31")
+#actual = data["2017-12-01":"2017-12-31"]
 
 # 実データと予測結果の図示
 plt.plot(data)
