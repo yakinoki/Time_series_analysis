@@ -1,7 +1,7 @@
 # Time_series_analysis
 
 ## SARIMA.py
-SARIMAモデルのテストコード
+Test code for SARIMA model
 
 ## StatsModel.py
-状態空間モデルのテストコード
+Test code for state-space model
