@@ -1,5 +1,3 @@
-# Optuna のinstallはpip
-
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 import optuna as op
