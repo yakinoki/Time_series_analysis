@@ -1,6 +1,5 @@
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
-import optuna as op
 import itertools
 import pandas as pd
 import numpy as np
