@@ -7,9 +7,10 @@ import itertools
 import pandas as pd
 import numpy as np
 import yaml
+from sklearn.metrics import mean_absolute_error
 
-#with open('config/config_sarima_month.yml','r',encoding="utf-8") as yml:
-with open('config/config_sarima_date.yml','r',encoding="utf-8") as yml:
+with open('config/config_sarima_month.yml','r',encoding="utf-8") as yml:
+#with open('config/config_sarima_date.yml','r',encoding="utf-8") as yml:
     config = yaml.safe_load(yml) 
     csv = config["csv"]      
     freq = config['freq']
@@ -48,11 +49,15 @@ def objective(trial):
                                         seasonal_order=(seasonal_p, seasonal_d, seasonal_q, s))
         results = mod.fit()
         pred = results.predict(pred_start_date, pred_end_date)
-        error = np.sqrt(np.mean((pred)**2))
-        #error = np.sqrt(np.mean((pred - bill[pred_start_date:pred_end_date])**2))
+        # 実際の値
+        actual = bill.loc[train_start_date:train_end_date]
+        # 評価用の値
+        evaluate = pred.loc[pred_start_date:train_end_date]
+        # 平均絶対誤差の計算
+        mae = mean_absolute_error(actual, evaluate)
     except:
-        error = float('inf')
-    return error
+        mae = float('inf')
+    return mae
 
 study = op.create_study(direction='minimize')
 study.optimize(objective, n_trials=50)
