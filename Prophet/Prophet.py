@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 warnings.filterwarnings("ignore")
 
 # データの読み込み。
-df_train = pd.read_csv('dataset/raw_data.csv')
+df_train = pd.read_csv('../dataset/raw_data.csv')
 df_train.columns = ['ds', 'y']
 
 # 祝日の取得。
@@ -57,7 +57,7 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 
 # 画像をPNGファイルとして保存。（ファイル名: predicted_values.png）
-plt.savefig('predicted_values.png')
+plt.savefig('../output/predicted_values.png')
 
 # PNGファイルとして保存した旨を表示。
 print("Predicted values plot saved as 'predicted_values.png'")
