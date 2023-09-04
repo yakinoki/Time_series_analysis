@@ -9,10 +9,10 @@ rcParams['figure.figsize'] = 15, 6
 
 # 日付形式で読み込む
 dateparse = lambda dates: pd.datetime.strptime(dates, '%Y/%m/%d')
-data = pd.read_csv('dataset/test_data.csv', index_col='ds', date_parser=dateparse, dtype='float')
+data = pd.read_csv('../dataset/test_data.csv', index_col='ds', date_parser=dateparse, dtype='float')
 
 # 祝日データの読み込み（仮定）
-holidays = pd.read_csv('dataset/holidays.csv', index_col='date', date_parser=dateparse, dtype='int')
+holidays = pd.read_csv('../dataset/holidays.csv', index_col='date', date_parser=dateparse, dtype='int')
 
 # データフレームに祝日情報の列を追加
 data['holiday'] = holidays['is_holiday']
