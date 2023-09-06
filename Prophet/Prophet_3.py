@@ -5,11 +5,11 @@ from prophet import Prophet
 warnings.filterwarnings("ignore")
 
 # データの読み込み
-df_train = pd.read_csv('dataset/raw_data.csv')
+df_train = pd.read_csv('../dataset/raw_data.csv')
 df_train.columns = ['ds', 'y']
 
 # イベントフラグの読み込み
-df_events = pd.read_csv('dataset/events.csv')
+df_events = pd.read_csv('../dataset/events.csv')
 
 # データにイベントフラグをマージ
 df_train = pd.merge(df_train, df_events, on='ds', how='left')

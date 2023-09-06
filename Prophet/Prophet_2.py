@@ -6,7 +6,7 @@ import jpholiday
 warnings.filterwarnings("ignore")
 
 # データの読み込み
-df_train = pd.read_csv('dataset/raw_data.csv')
+df_train = pd.read_csv('../dataset/raw_data.csv')
 df_train.columns = ['ds', 'y']
 
 # 祝日効果を追加する列を作成
