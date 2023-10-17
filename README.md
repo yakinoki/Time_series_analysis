@@ -15,4 +15,5 @@ The equation concerning the state variable $x$ is referred to as the state equat
 Test code for Prophet model
 
 ## NeuralProphet.py
-Test code for NeuralProphet model
+Test code for NeuralProphet model.
+NeuralProphet is a library released by Facebook, which is a time series data forecasting model based on the combination of Prophet and AR-Net, a self-regressive neural network model.
