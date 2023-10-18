@@ -13,6 +13,24 @@ The equation concerning the state variable $x$ is referred to as the state equat
 
 ## ./Prophet
 Test code for Prophet model
+In Prophet, time series data is conceptualized as having the following components:
+
+$g(t)$: Trend function
+
+$s(t)$: Seasonal variation
+
+$h(t)$: Holiday effect
+
+$ε_t$: Error term
+
+Furthermore, time series data is modeled as the sum of these components, and it is constructed with the following formula:
+
+$$y(t) = g(t) + s(t) + h(t) + ε_t.$$
+
+
+
+
+
 
 ## NeuralProphet.py
 Test code for NeuralProphet model.
