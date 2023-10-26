@@ -3,6 +3,8 @@
 ## SARIMA
 Test code for SARIMA model
 
+A model that incorporates a seasonal component into the ARIMA model is called a SARIMA model.
+
 ## StatsModel
 Test code for state-space model
 
