@@ -3,7 +3,27 @@
 ## SARIMA
 Test code for SARIMA model
 
-A model that incorporates a seasonal component into the ARIMA model is called a SARIMA model.
+The SARIMA (Seasonal Autoregressive Integrated Moving Average) model is a statistical model used for forecasting time series data, and it can decompose observed values into components such as trend, seasonality, and white noise (residuals). Here's a general logic for how the SARIMA model separates observed values:
+
+1. Differencing:
+The first step in the SARIMA model is differencing the data. This is done to reduce the trend component. The order of differencing is adjusted to ensure data stationarity. If the trend is already a stationary process, differencing may not be necessary.
+
+2. Seasonal Identification:
+If there is seasonality in the data, the SARIMA model needs to capture it. Identify the seasonal pattern (e.g., yearly, quarterly, monthly), and set the seasonal orders (P, D, Q) accordingly.
+
+3. Model Specification:
+The SARIMA model is defined by combining elements of AR (AutoRegressive), I (Integrated), MA (Moving Average), and seasonal components. Choose the appropriate orders for AR (p), I (d), MA (q), and seasonal AR (P), seasonal I (D), seasonal MA (Q). This is typically done using plots of autocorrelation and partial autocorrelation functions of the data.
+
+4. Model Estimation:
+Estimate the parameters of the selected model. This is done using statistical methods such as maximum likelihood estimation.
+
+5. Model Diagnosis:
+Examine the residuals of the estimated model and assess the goodness of fit. Residuals should ideally behave like white noise. Model diagnosis involves plotting the autocorrelation and partial autocorrelation functions of the residuals, checking for normality of the residuals, and other diagnostic checks.
+
+6. Forecasting:
+Finally, use the SARIMA model to predict future values. Utilize the model parameters to make forecasts that account for trends, seasonality, and residuals.
+
+
 
 ## StatsModel
 Test code for state-space model
