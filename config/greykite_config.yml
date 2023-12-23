@@ -1,0 +1,9 @@
+forecast_horizon: 30
+coverage: 0.95
+metadata_param: auto
+agg_level: auto
+model_template: SILVERKITE
+holiday_effect_prior_scale: 10
+yearly_seasonality_order: 8
+weekly_seasonality_order: 3
+regularization_alpha: 0.1

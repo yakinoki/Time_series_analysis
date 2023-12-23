@@ -1,47 +1,31 @@
-# Greykiteライブラリのインストール
-!pip install greykite
-
-# 必要なモジュールのインポート
+import yaml
 from greykite.framework.templates.autogen.forecast_config import ForecastConfig
-from greykite.framework.templates.forecaster import Forecaster
 from greykite.framework.templates.model_templates import ModelTemplateEnum
-from greykite.framework.templates.simple_silverkite.silverkite_estimator import SilverkiteEstimator
-from greykite.framework.templates.simple_silverkite.silverkite_simple_gcv import SimpleGCV
 
-# サンプルデータの生成
-import pandas as pd
-import numpy as np
+# YAMLファイルの読み込み
+with open("config/greykite_config.yml", "r") as file:
+    config_dict = yaml.safe_load(file)
 
-np.random.seed(42)
-date_rng = pd.date_range(start="2023-01-01", end="2023-12-31", freq="D")
-y = np.random.normal(loc=0, scale=1, size=len(date_rng))
-
-df = pd.DataFrame({"timestamp": date_rng, "value": y})
-
-# 設定の定義
-forecast_horizon = 30  # 予測の期間
+# ForecastConfigの構築
 config = ForecastConfig(
-    forecast_horizon=forecast_horizon,
-    coverage=0.95,
-    metadata_param="auto",
-    agg_level="auto",
-    model_template=ModelTemplateEnum.SILVERKITE.name,
-    holiday_effect_prior_scale=10,
-    yearly_seasonality_order=8,
-    weekly_seasonality_order=3,
-    regularization_alpha=0.1,
+    forecast_horizon=config_dict["forecast_horizon"],
+    coverage=config_dict["coverage"],
+    metadata_param=config_dict["metadata_param"],
+    agg_level=config_dict["agg_level"],
+    model_template=getattr(ModelTemplateEnum, config_dict["model_template"]),
+    holiday_effect_prior_scale=config_dict["holiday_effect_prior_scale"],
+    yearly_seasonality_order=config_dict["yearly_seasonality_order"],
+    weekly_seasonality_order=config_dict["weekly_seasonality_order"],
+    regularization_alpha=config_dict["regularization_alpha"],
 )
 
 # Forecasterの初期化とデータのフィット
 forecaster = Forecaster()
 result = forecaster.run_forecast(df, config)
 
-# 予測結果の取得
-forecast = result.forecast
-
 # 予測結果のプロット
 result.plot()
 
-# 予測結果の評価
-mse = result.mean_squared_error()
-print(f"Mean Squared Error: {mse}")
+# プロットを表示
+import matplotlib.pyplot as plt
+plt.show()
