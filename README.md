@@ -1,5 +1,11 @@
 # Time_series_analysis
 
+You can use the following command to install the necessary packages.
+
+```sh
+pip install -r requirements.txt
+```
+
 ## SARIMA
 Test code for SARIMA model
 
