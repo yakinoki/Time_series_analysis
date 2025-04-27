@@ -2,3 +2,4 @@
 ./venv
 ./output
 *.png
+lightning_logs
